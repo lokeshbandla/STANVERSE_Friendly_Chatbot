@@ -20,5 +20,5 @@ def call_openrouter(messages: list, temperature: float = 0.9, usage: bool = Fals
     }
     if usage:
         payload["usage"] = {"include": True}
-    resp = requests.post(API_URL, headers=headers, json=payload)
+    resp = requests.post(API_URL, headers=headers, json=payload,verify=False)
     return resp.json()

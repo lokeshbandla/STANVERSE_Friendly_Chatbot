@@ -3,10 +3,12 @@ from pymongo import MongoClient
 from datetime import datetime
 import os
 from dotenv import load_dotenv
+import certifi
 load_dotenv()
 
+ca = certifi.where()
 
-client = MongoClient(os.getenv("MONGO_URI"))
+client = MongoClient(os.getenv("MONGO_URI"), tlsCAFile=ca)
 db = client[os.getenv("DB_NAME")]
 
 users_col = db["users"]
