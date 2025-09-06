@@ -42,4 +42,4 @@ def save_memory(user_id: str, user_message: str, reply: str, emotion: str):
 
 def get_recent_memories(user_id: str, limit: int = 100) -> str:
     chats = memories_col.find({"user_id": user_id}).sort("timestamp", -1).limit(limit)
-    return " | ".join([f"({c['emotion']}) {c['text']}" for c in chats])
+    return " | ".join([f"(tone: {c['emotion']}) (User: {c['text']}) (You: {c['reply']})" for c in chats])

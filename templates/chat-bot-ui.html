@@ -1,31 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🤖 STANVERSE FUTURE AI</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-  <div class="chat-wrapper">
-    <header>
-      <h1>⚡ STANVERSE FUTURE AI</h1>
-      <p>Your futuristic best friend</p>
-    </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, interactive-widget=resizes-content"
+    />
+    <title>⚡ STANVERSE FUTURE AI</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="chat-wrapper">
+      <header>
+        <h1>⚡ STANVERSE FUTURE AI</h1>
+        <p>Your futuristic best friend</p>
+      </header>
 
-    <div class="chat-container">
-      <div class="messages" id="messages"></div>
-      <div class="typing"><div id="typing">STANVERSE is typing...</div></div>
+      <div class="chat-container">
+        <div class="messages" id="messages"></div>
+        <div class="typing"><div id="typing">STANVERSE is typing...</div></div>
 
-      <div class="input-box">
-        <input type="text" id="userInput" placeholder="Type a message..." onkeypress="checkEnter(event)" />
-        <button onclick="sendMessage()">Send</button>
-        <button class="microphone" onclick="startRecording()">🎤</button>
+        <div class="input-box">
+          <input
+            type="text"
+            id="userInput"
+            placeholder="Type a message..."
+            onkeypress="checkEnter(event)"
+          />
+          <button onclick="sendMessage()">Send</button>
+          <button class="microphone" onclick="startRecording()">🎤</button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
-</body>
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+  </body>
+  <script>
+    /* ---------------- Handle Mobile Keyboard ---------------- */
+    function adjustForKeyboard() {
+      const chatWrapper = document.querySelector(".chat-wrapper");
+      // Use window.innerHeight to detect changes when keyboard is open
+      chatWrapper.style.height = window.innerHeight + "px";
+      scrollToBottom();
+    }
+
+    window.addEventListener("resize", adjustForKeyboard);
+    window.addEventListener("orientationchange", adjustForKeyboard);
+
+    // Initial adjustment
+    adjustForKeyboard();
+  </script>
 </html>
