@@ -2,11 +2,8 @@ from flask import Flask, request, jsonify, render_template
 from utils.openRouter import call_openrouter
 from utils.memory import get_user_profile,save_memory, get_recent_memories
 from utils.tone import detect_tone
-import json
 import uuid
 
-with open("config.json") as f:
-    config = json.load(f)
 
 app = Flask("STANVERSE-FUTURE-AI")
 

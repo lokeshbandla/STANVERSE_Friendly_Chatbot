@@ -1,12 +1,9 @@
 import requests, json
-from pathlib import Path
+import os
 
-with open(Path(__file__).parent.parent / "config.json") as f:
-    config = json.load(f)
-
-API_KEY = config["OPENROUTER_API_KEY"]
-API_URL = config["OPENROUTER_API_URL"]
-MODEL_NAME = config["MODEL_NAME"]
+API_KEY = os.getenv("OPENROUTER_API_KEY")
+API_URL = os.getenv("OPENROUTER_API_URL")
+MODEL_NAME = os.getenv("MODEL_NAME")
 
 def call_openrouter(messages: list, temperature: float = 0.9, usage: bool = False) -> dict:
     headers = {

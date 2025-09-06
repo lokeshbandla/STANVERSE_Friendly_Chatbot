@@ -1,12 +1,11 @@
 import json
 from pymongo import MongoClient
 from datetime import datetime
+import os
 
-with open("config.json") as f:
-    config = json.load(f)
 
-client = MongoClient(config["MONGO_URI"])
-db = client[config["DB_NAME"]]
+client = MongoClient(os.getenv("MONGO_URI"))
+db = client[os.getenv("DB_NAME")]
 
 users_col = db["users"]
 memories_col = db["memories"]
