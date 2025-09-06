@@ -2,6 +2,8 @@ import json
 from pymongo import MongoClient
 from datetime import datetime
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 
 client = MongoClient(os.getenv("MONGO_URI"))

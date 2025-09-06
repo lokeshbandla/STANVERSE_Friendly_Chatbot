@@ -3,3 +3,4 @@ pymongo
 requests
 certifi
 gunicorn
+python-dotenv
