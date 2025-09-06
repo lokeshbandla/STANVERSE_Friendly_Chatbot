@@ -50,6 +50,7 @@ def chat():
 
         return jsonify({"reply": content, "tone": tone, "user_id": user_id})
     except Exception as e:
+        print("error",e)
         return jsonify({"reply": "I hit wall. Please try after some time", "tone": "", "user_id": user_id})
 
 
